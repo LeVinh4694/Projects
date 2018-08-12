@@ -33,8 +33,3 @@ class SupplyChain:
 			return True
 		except ValueError as e:
 			return e
-
-web3 = Web3(Web3.HTTPProvider('http://localhost:8080', request_kwargs={'timeout': 60}))
-sc = SupplyChain(web3)
-print(sc.CheckBalance(), 'Ether')
-print(sc.SendEther('0x487f3fb0eebf1a9894914c8b5286f9b761f7fa35', 10))
