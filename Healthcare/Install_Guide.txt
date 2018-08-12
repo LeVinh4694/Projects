@@ -1,0 +1,22 @@
+->Install geth on Ubuntu
+sudo apt-get install software-properties-common
+sudo add-apt-repository -y ppa:ethereum/ethereum
+sudo apt-get update
+sudo apt-get install ethereum
+
+->Install Python3
+sudo apt-get install python3
+->Install pip3
+sudo apt-get install python3-pip
+->Install web3 for python3
+pip3 install web3
+->Install python3 solc
+pip3 install py-solc
+->Install compiler solc
+sudo apt-get install solc
+
+->Install sublime3
+
+Create new private network commands:
+geth --identity "node0" --rpc --rpcport "8080" --rpccorsdomain "*" --datadir data --port "30303" --nodiscover --rpcapi "db,eth,net,web3,personal,web3" --networkid 1999 init "Genesis\genesis.json"
+geth --identity "node0" --rpc --rpcport "8080" --rpccorsdomain "*" --datadir data --port "30303" --nodiscover --rpcapi "db,eth,net,web3,personal,web3" --networkid 1999 console

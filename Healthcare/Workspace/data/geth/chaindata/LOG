@@ -1,0 +1,70 @@
+=============== Jun 17, 2018 (+07) ===============
+18:29:51.461361 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:29:51.519473 db@open opening
+18:29:51.520051 version@stat F·[] S·0B[] Sc·[]
+18:29:51.561567 db@janitor F·2 G·0
+18:29:51.561694 db@open done T·42.136268ms
+=============== Jun 17, 2018 (+07) ===============
+18:30:01.036821 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:30:01.036893 version@stat F·[] S·0B[] Sc·[]
+18:30:01.036898 db@open opening
+18:30:01.036923 journal@recovery F·1
+18:30:01.038872 journal@recovery recovering @1
+18:30:01.071798 memdb@flush created L0@2 N·9 S·551B "H\xb5\x06..?\xda*,v3":"r\x00\x00..?\xda*,v5"
+18:30:01.073635 version@stat F·[1] S·551B[551B] Sc·[0.25]
+18:30:01.131063 db@janitor F·3 G·0
+18:30:01.131127 db@open done T·94.212008ms
+=============== Jun 17, 2018 (+07) ===============
+18:31:23.088572 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:31:23.088689 version@stat F·[1] S·551B[551B] Sc·[0.25]
+18:31:23.088698 db@open opening
+18:31:23.088737 journal@recovery F·1
+18:31:23.090745 journal@recovery recovering @3
+18:31:23.137794 memdb@flush created L0@5 N·194 S·8KiB "Dat..ion,v11":"\xfa\xe3C..M\xe7\xc1,v203"
+18:31:23.140722 version@stat F·[2] S·8KiB[8KiB] Sc·[0.50]
+18:31:23.205419 db@janitor F·4 G·0
+18:31:23.205511 db@open done T·116.791345ms
+=============== Jun 17, 2018 (+07) ===============
+18:58:13.655109 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:58:13.675630 version@stat F·[2] S·8KiB[8KiB] Sc·[0.50]
+18:58:13.675668 db@open opening
+18:58:13.675797 journal@recovery F·1
+18:58:13.685086 journal@recovery recovering @6
+18:58:13.774180 memdb@flush created L0@8 N·2 S·238B "Dat..ion,v206":"Las..der,v207"
+18:58:13.782231 version@stat F·[3] S·8KiB[8KiB] Sc·[0.75]
+18:58:13.849882 db@janitor F·5 G·0
+18:58:13.849941 db@open done T·174.248031ms
+=============== Jun 17, 2018 (+07) ===============
+20:40:22.646740 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+20:40:22.670653 version@stat F·[3] S·8KiB[8KiB] Sc·[0.75]
+20:40:22.670718 db@open opening
+20:40:22.670914 journal@recovery F·1
+20:40:22.680401 journal@recovery recovering @9
+20:40:22.724637 memdb@flush created L0@11 N·2 S·238B "Dat..ion,v209":"Las..der,v210"
+20:40:22.732682 version@stat F·[4] S·9KiB[9KiB] Sc·[1.00]
+20:40:22.792141 db@janitor F·6 G·0
+20:40:22.792224 db@open done T·121.480844ms
+20:40:22.792395 table@compaction L0·4 -> L1·0 S·9KiB Q·211
+20:40:22.867056 table@build created L1@14 N·140 S·7KiB "Dat..ion,v209":"\xfa\xe3C..M\xe7\xc1,v203"
+20:40:22.867220 version@stat F·[0 1] S·7KiB[0B 7KiB] Sc·[0.00 0.00]
+20:40:22.934028 table@compaction committed F-3 S-1KiB Ke·0 D·67 T·141.459384ms
+20:40:22.934246 table@remove removed @11
+20:40:22.934398 table@remove removed @8
+20:40:22.934660 table@remove removed @5
+20:40:22.934814 table@remove removed @2
+=============== Jun 18, 2018 (+07) ===============
+01:21:24.387290 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+01:21:24.387972 version@stat F·[0 1] S·7KiB[0B 7KiB] Sc·[0.00 0.00]
+01:21:24.388011 db@open opening
+01:21:24.388174 journal@recovery F·1
+01:21:24.397216 journal@recovery recovering @12
+01:21:24.480892 memdb@flush created L0@15 N·2329 S·128KiB "Dat..ion,v212":"r\x00\x00..\xbemE,v2536"
+01:21:24.490948 version@stat F·[1 1] S·135KiB[128KiB 7KiB] Sc·[0.25 0.00]
+01:21:24.556785 db@janitor F·4 G·0
+01:21:24.556872 db@open done T·168.828934ms
+01:22:18.971457 table@compaction L0·1 -> L1·1 S·135KiB Q·2543
+01:22:19.011660 table@build created L1@18 N·1702 S·105KiB "Dat..ion,v212":"\xfa\xe3C..M\xe7\xc1,v203"
+01:22:19.011810 version@stat F·[0 1] S·105KiB[0B 105KiB] Sc·[0.00 0.00]
+01:22:19.053492 table@compaction committed F-1 S-30KiB Ke·0 D·767 T·81.963566ms
+01:22:19.053743 table@remove removed @15
+01:22:19.053944 table@remove removed @14
