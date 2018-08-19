@@ -1,13 +1,13 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.24;
 
 contract RegistrarContract{
     address ownerAddr;
     
     struct RC{
-        uint64 id_number;			// ID number of user
         address accAddr;			// Account address of user
+		address sumAddr;			// Summary address of user
     }
-    RC rc;
+	RC rc;
     
     mapping(uint64 => RC) private Users;
     
@@ -20,18 +20,31 @@ contract RegistrarContract{
         ownerAddr = msg.sender;
     }
     
-    function newRecord(uint64 id_number, address accAddr) onlyOwner public{
-        rc.id_number = id_number;
+    function NewRecord(uint64 id_number, address accAddr) onlyOwner public{
         rc.accAddr = accAddr;
+		rc.sumAddr = new SummaryContract(accAddr);
         
         Users[id_number] = rc;
     }
     
-    function getInfo(uint64 id_number) public view returns(address){
-        return (Users[id_number].accAddr);
+    function GetInfo(uint64 id_number) public view returns(address, address){
+        return (Users[id_number].accAddr, Users[id_number].sumAddr);
     }
 }
 
-contract Supplychain {
+contract SummaryContract{
+	address ownerAddr;
+	
+	modifier onlyOwner{
+		require(msg.sender == ownerAddr);
+		_;
+	}
+	
+	constructor(address owner) public{
+		ownerAddr = owner;
+	}
+}
+
+contract SupplyContract {
 	
 }

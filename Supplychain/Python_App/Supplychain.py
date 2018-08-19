@@ -5,10 +5,21 @@ import sys, os
 import getpass
 # Import library for Web3 Ethereum
 from web3 import Web3
+# Import contract ABI
+from ABI import *
+
+__author__ = 'Le Quang Vinh'
+__license__ = 'GPL'
+__version__ = '1.0.0'
 
 class SupplyChain:
 	def __init__(self, obj):
 		self.obj = obj
+		self.RegistrarContract = self.obj.eth.contract(address=RegistrarContract_ADDR,
+														abi=RegistrarContract_ABI)
+		
+	def CreateContractInstance(self, address, abi):
+		return self.obj.eth.contract(address=address, abi=abi)
 
 	def CheckBalance(self):
 		return self.obj.fromWei(self.obj.eth.getBalance(self.obj.eth.coinbase), 'ether')
@@ -19,17 +30,55 @@ class SupplyChain:
 		return ret
 
 	def SendEther(self, receiver, amount):
-		# Check received account is existed
+		# Return error if receiver address or ether amount is incorrect
 		if not self.obj.isAddress(receiver):
-			return 'Invalid account address.'
+			return 'Invalid account address'
+		if not type(amount) == int:
+			return 'Invalid Ether amount'
 		# Unlock account
 		if not self.UnlockAccount():
-			return 'Password is incorrect.'
+			return 'Password is incorrect'
 		try:
 			# Send transaction
 			self.tx_hash = self.obj.eth.sendTransaction({'from':self.obj.eth.coinbase, 
 										'to':self.obj.toChecksumAddress(receiver), 
 										'value': self.obj.toWei(amount, 'ether')})
 			return True
-		except ValueError as e:
-			return e
+		except:
+			print(sys.exc_info()[1])
+			return False
+			
+	def Registrar_NewRecord(self, id_number, accAddr):
+		# Return error if ID number or account address is invalid
+		if not type(id_number) == int:
+			return 'Invalid ID number'
+		if not self.obj.isAddress(accAddr):
+			return 'Invalid account address'
+		# Unlock account (return incorrect password if failed)
+		if not self.UnlockAccount():
+			return 'Password is incorrect'
+
+		try:
+			# Set base account for transaction
+			self.obj.eth.defaultAccount = self.obj.toChecksumAddress(self.obj.eth.coinbase)
+			# Send transaction
+			self.tx_hash = self.RegistrarContract.functions.NewRecord(id_number,
+										self.obj.toChecksumAddress(accAddr)).transact()
+			return True
+		except:
+			print(sys.exc_info()[1])
+			return False
+
+	def Registrar_GetInfo(self, id_number):
+		if not type(id_number) == int:
+			return 'Invalid ID number'
+		try:
+			return self.RegistrarContract.functions.GetInfo(id_number).call()
+		except:
+			print(sys.exc_info()[1])
+			return False
+			
+web3 = Web3(Web3.HTTPProvider('http://localhost:8080', request_kwargs={'timeout': 60}))
+sc = SupplyChain(web3)
+print(sc.Registrar_NewRecord(201690345, '0x8ED1D9B1Fd2fE3Eb6C30cFE16757EB41b71c7850'))
+print(sc.Registrar_GetInfo(201690345))
