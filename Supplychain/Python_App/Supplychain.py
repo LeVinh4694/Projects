@@ -70,6 +70,7 @@ class SupplyChain:
 			return False
 
 	def Registrar_GetInfo(self, id_number):
+		# Return error if ID number is invalid
 		if not type(id_number) == int:
 			return 'Invalid ID number'
 		try:
@@ -80,5 +81,3 @@ class SupplyChain:
 			
 web3 = Web3(Web3.HTTPProvider('http://localhost:8080', request_kwargs={'timeout': 60}))
 sc = SupplyChain(web3)
-print(sc.Registrar_NewRecord(201690345, '0x8ED1D9B1Fd2fE3Eb6C30cFE16757EB41b71c7850'))
-print(sc.Registrar_GetInfo(201690345))

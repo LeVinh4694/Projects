@@ -34,6 +34,15 @@ contract RegistrarContract{
 
 contract SummaryContract{
 	address ownerAddr;
+	int total_pcr = 0;
+	
+	struct PCR{
+		address pcrAddr;
+		string pcrAbtract;
+		string pcrParticipant;
+		bool pcrStatus;
+	}
+	PCR pcr;
 	
 	modifier onlyOwner{
 		require(msg.sender == ownerAddr);
