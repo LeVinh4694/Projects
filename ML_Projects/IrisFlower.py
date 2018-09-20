@@ -15,25 +15,34 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.datasets import load_iris
 
-def main():
-	
-	data = load_iris()
+def VisualizationData(data):
 	features = data['data']
 	feature_names = data['feature_names']
 	target = data['target']
 
-	print(feature_names)
-	''' Visualize data with sepal length and width
-	The sepal length and width seem to be able to seperate Iris Setosa
-	'''
-	for t, marker, c in zip(np.arange(3), '>ox', 'rgb'):
-		plt.scatter(features[target == t,0],
-					features[target == t,1],
-					marker = marker,
-					c = c)
-	plt.xlabel(feature_names[0])
-	plt.ylabel(feature_names[1])
+	f, axarr = plt.subplots(2, 3)
+	f.canvas.set_window_title('IrisFlower Plants Database')
+	f.suptitle('Iris flower classification based on length and width of sepal and petal')
+
+	# Visualize data
+	pos = [(0,0), (0,1), (0,2), (1,0), (1,1), (1,2)]
+	x_col = [0, 0, 0, 1, 1, 2]
+	y_col = [1, 2, 3, 2, 3, 3]
+	for p, x, y in zip(pos, x_col, y_col):
+		for t, marker, c in zip(np.arange(3), '>ox', 'rgb'):
+			axarr[p].scatter(features[target == t, x],
+								features[target == t, y],
+								marker = marker,
+								c = c)
+			axarr[p].set(xlabel = feature_names[x], ylabel = feature_names[y])
+
 	plt.show()
+	return
+
+def main():
+	
+	data = load_iris()
+	VisualizationData(data)
 	return
 
 if __name__ == '__main__':
