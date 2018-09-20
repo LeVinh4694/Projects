@@ -42,7 +42,6 @@ def AnalyzeData(data):
 			pred = (features[:,fi] > t)
 			acc = (pred == is_virginica).mean()
 			if acc > best_acc:
-				print(pred == is_virginica)
 				best_acc = acc
 				best_fi = fi
 				best_t = t
