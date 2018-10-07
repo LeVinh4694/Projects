@@ -1,0 +1,25 @@
+module DFF(output Q, Q_BAR,
+	   input D, CLK);
+	reg Q, Q_BAR;
+	wire D, CLK;
+
+	nand U1 (X, D, CLK);
+	nand U2 (Y, X, CLK);
+	nand U3 (Q, Q_BAR, X);
+	nand U4 (Q_BAR, Q, Y); 
+endmodule
+
+module testBench();
+	reg a, b, c;
+	wire y;
+
+	sillyFunction dut (.a(a), .b(b), .c(c), .y(y));
+
+	initial begin
+		a = 0; b = 0; c = 0; #10;
+		c = 1; #10;
+		b = 1; c = 0; #10;
+		c = 1; #10;
+		a = 1; b = 0; c = 0; #10;
+	end
+endmodule
